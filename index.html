@@ -3,36 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lotus's Website</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            background-color: #f4f4f4;
-            padding: 20px;
-        }
-        h1 {
-            color: #333;
-        }
-        .avatar {
-            border-radius: 50%;
-            width: 150px;
-            height: 150px;
-            margin: 20px 0;
-        }
-        .image {
-            max-width: 100%;
-            height: auto;
-            margin: 20px 0;
-        }
-    </style>
+    <title>My Cool Personal Homepage</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <img src="dog.jpg" alt="Avatar" class="avatar">
-    <h1>Personal Statement</h1>
-    <p>Master’s degree in Computer Science.</p>
-    <p>Specializing in Computer Vision.</p>
-    
-    <p>Ask me about Github.</p>
+    <div class="container">
+        <header>
+            <h1>Welcome to My World</h1>
+            <p>I'm Lotus, Master’s degree in Computer Science.</p>
+        </header>
+        
+        <section class="about">
+            <h2>About Me</h2>
+            <p>I am currently a graduate student in Computer Science at the City University of Macau, with a dedicated focus on Artificial Intelligence. </p>
+        </section>
+        
+        <section class="portfolio">
+            <h2>My Work</h2>
+            <div class="projects">
+                <div class="project">
+                    <h3>Project 1</h3>
+                    <p>Stock pattern recognition based on machine learning</p>
+
+                </div>
+                <div class="project">
+                    <h3>Project 2</h3>
+                    <p>LibraryManagement.</p>
+                </div>
+                <div class="project">
+                    <h3>Project 3</h3>
+                    <p>MasterManger backend management system.</p>
+                </div>
+            </div>
+        </section>
+        
+        <footer>
+            <p>Connect with me on 
+                <a href="https://github.com/miaoyinnu" target="_blank">GitHub</a> | 
+                <a href="mailto:mujipuluto@outlook.com">Email</a>
+            </p>
+        </footer>
+    </div>
 </body>
 </html>
