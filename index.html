@@ -1,48 +1,141 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Cool Personal Homepage</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <title>情侣纪念日计时</title>
+  <style>
+    /* 页面背景及整体样式 */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Microsoft YaHei", sans-serif;
+      background: #fdfdfd;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    h1 {
+      margin: 0;
+      margin-bottom: 20px;
+      font-size: 1.8rem;
+      text-align: center;
+    }
+
+    /* 两个头像的容器 */
+    .avatars {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    /* 单个头像 + 名字的容器 */
+    .avatar {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 0 40px; /* 两个头像之间保持一定间距 */
+    }
+
+    /* 圆形头像样式 */
+    .avatar img {
+      width: 120px;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 3px solid #ff9999; /* 可根据喜好修改颜色 */
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    /* 名字样式 */
+    .name {
+      margin-top: 10px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: #333;
+    }
+
+    /* 中间的计时器文字 */
+    .timer {
+      font-size: 1.2rem;
+      color: #444;
+    }
+
+    /* 强调数字部分 */
+    .timer span {
+      color: #d9534f; /* 可以改成你喜欢的颜色 */
+      font-weight: bold;
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>Welcome to My World</h1>
-            <p>I'm Lotus, Master’s degree in Computer Science.</p>
-        </header>
-        
-        <section class="about">
-            <h2>About Me</h2>
-            <p>I am currently a graduate student in Computer Science at the City University of Macau, with a dedicated focus on Artificial Intelligence. </p>
-        </section>
-        
-        <section class="portfolio">
-            <h2>My Work</h2>
-            <div class="projects">
-                <div class="project">
-                    <h3>Project 1</h3>
-                    <p>Stock pattern recognition based on machine learning</p>
 
-                </div>
-                <div class="project">
-                    <h3>Project 2</h3>
-                    <p>LibraryManagement.</p>
-                </div>
-                <div class="project">
-                    <h3>Project 3</h3>
-                    <p>MasterManger backend management system.</p>
-                </div>
-            </div>
-        </section>
-        
-        <footer>
-            <p>Connect with me on 
-                <a href="https://github.com/miaoyinnu" target="_blank">GitHub</a> | 
-                <a href="mailto:mujipuluto@outlook.com">Email</a>
-            </p>
-        </footer>
+  <!-- 标题（可按需要修改） -->
+  <h1>我们的纪念日</h1>
+
+  <!-- 头像区域 -->
+  <div class="avatars">
+    <div class="avatar">
+      <!-- 把 src 替换成自己喜欢的图片链接 -->
+      <img src="1.jpg" alt="Avatar1">
+      <div class="name">小霖</div>
     </div>
+    <div class="avatar">
+      <img src="2.jpg" alt="Avatar2">
+      <div class="name">小奕</div>
+    </div>
+  </div>
+
+  <!-- 计时器 -->
+  <div class="timer">
+    已相伴
+    <span id="days">0</span> 天
+    <span id="hours">0</span> 小时
+    <span id="minutes">0</span> 分钟
+    <span id="seconds">0</span> 秒
+  </div>
+
+  <script>
+    // 设置开始在一起的时间(年-月-日 时:分:秒)
+    // 注意：月份是从0开始计算的，所以 2023 年 7 月要写成 6
+    // 比如 2023年7月1日 10:00:00：
+    const startDate = new Date(2025, 0, 17, 10, 0, 0);
+
+    // 获取页面中的计时元素
+    const daysElement = document.getElementById("days");
+    const hoursElement = document.getElementById("hours");
+    const minutesElement = document.getElementById("minutes");
+    const secondsElement = document.getElementById("seconds");
+
+    // 用于更新计时器的函数
+    function updateTimer() {
+      const now = new Date();
+      // 计算相差的毫秒数
+      const diff = now - startDate; 
+      
+      // 转化为秒
+      const diffInSeconds = Math.floor(diff / 1000);
+
+      // 计算天、小时、分钟、秒
+      const days = Math.floor(diffInSeconds / (3600 * 24));
+      const hours = Math.floor((diffInSeconds % (3600 * 24)) / 3600);
+      const minutes = Math.floor((diffInSeconds % 3600) / 60);
+      const seconds = diffInSeconds % 60;
+
+      // 更新页面显示
+      daysElement.textContent = days;
+      hoursElement.textContent = hours;
+      minutesElement.textContent = minutes;
+      secondsElement.textContent = seconds;
+    }
+
+    // 页面加载后先调用一次
+    updateTimer();
+    // 每隔一秒更新一次
+    setInterval(updateTimer, 1000);
+  </script>
 </body>
 </html>
